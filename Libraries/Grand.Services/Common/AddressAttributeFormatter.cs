@@ -79,7 +79,7 @@ namespace Grand.Services.Common
                     else
                     {
                         string attributeValueId = valueStr;
-                        var attributeValue = attribute.AddressAttributeValues.FirstOrDefault(x => x.Id == attributeValueId); //_addressAttributeService.GetAddressAttributeValueById(attributeValueId);
+                        var attributeValue = attribute.AddressAttributeValues.FirstOrDefault(x => x.Id == attributeValueId); 
                         if (attributeValue != null)
                         {
                             formattedAttribute = string.Format("{0}: {1}", attribute.GetLocalized(a => a.Name, _workContext.WorkingLanguage.Id), attributeValue.GetLocalized(a => a.Name, _workContext.WorkingLanguage.Id));
