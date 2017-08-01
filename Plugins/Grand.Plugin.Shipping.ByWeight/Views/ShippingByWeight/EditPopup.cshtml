@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "~/Administration/Views/Shared/_AdminPopupLayout.cshtml";
+    Layout = "_AdminPopupLayout";
 }
 @model ShippingByWeightModel
 @using Grand.Plugin.Shipping.ByWeight.Models;
@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="portlet-body form">
-                    @Html.Partial("~/Plugins/Shipping.ByWeight/Views/ShippingByWeight/_CreateOrUpdate.cshtml", Model)
+                    @Html.Partial("~/Plugins/Shipping.ByWeight/netcoreapp1.1/Views/ShippingByWeight/_CreateOrUpdate.cshtml", Model)
                 </div>
             </div>
         </div>

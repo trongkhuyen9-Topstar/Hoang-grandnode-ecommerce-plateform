@@ -1,5 +1,5 @@
 ﻿@{
-    Layout = "";
+    Layout = "_ConfigurePlugin";
 
     var defaultGridPageSize = EngineContext.Current.Resolve<Grand.Core.Domain.Common.AdminAreaSettings>().DefaultGridPageSize;
     var gridPageSizes = EngineContext.Current.Resolve<Grand.Core.Domain.Common.AdminAreaSettings>().GridPageSizes;
@@ -7,7 +7,7 @@
 }
 @model ShippingByWeightListModel
 @using Grand.Plugin.Shipping.ByWeight.Models;
-@using Grand.Web.Framework;
+@using Grand.Framework;
 @using Grand.Core.Infrastructure;
 @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "shipping-byweight-form" }))
 {
@@ -17,7 +17,7 @@
         @T("Plugins.Shipping.ByWeight.Formula.Value")
     </div>
 
-    var addNewUrl = Url.RouteUrl("Plugin.Shipping.ByWeight.AddPopup") + "?btnId=btnRefresh&formId=shipping-byweight-form";
+    var addNewUrl = Url.Action("AddPopup", "ShippingByWeight", new { btnId = "btnRefresh", formId = "shipping-byweight-form" });
 
     <div class="panel panel-default">
         <div class="panel-body">
@@ -37,13 +37,13 @@
                             dataSource: {
                                 transport: {
                                     read: {
-                                        url: "@Html.Raw(Url.Action("RatesList", "ShippingByWeight", new RouteValueDictionary { { "Namespaces", "Grand.Plugin.Shipping.ByWeight.Controllers" }, { "area", "" } }))",
+                                        url: "@Html.Raw(Url.Action("RatesList", "ShippingByWeight"))",
                                         type: "POST",
                                         dataType: "json",
                                         data: addAntiForgeryToken
                                     },
                                     destroy: {
-                                        url: "@Html.Raw(Url.Action("RateDelete", "ShippingByWeight", new RouteValueDictionary { { "Namespaces", "Grand.Plugin.Shipping.ByWeight.Controllers" }, { "area", "" } }))",
+                                        url: "@Html.Raw(Url.Action("RateDelete", "ShippingByWeight"))",
                                         type: "POST",
                                         dataType: "json",
                                         data: addAntiForgeryToken
@@ -114,7 +114,7 @@
                                 field: "Id",
                                 title: "@T("Admin.Common.Edit")",
                                 width: 100,
-                                template: "<input type='submit' value='@T("Admin.Common.Edit")' onclick=\"javascript:OpenWindow('@Url.RouteUrl("Plugin.Shipping.ByWeight.EditPopup")?id=#=Id#&btnId=btnRefresh&formId=shipping-byweight-form', 800, 400, true); return false;\" class='k-button' />"
+                                template: "<input type='submit' value='@T("Admin.Common.Edit")' onclick=\"javascript:OpenWindow('@Url.Action("EditPopup","ShippingByWeight")?id=#=Id#&btnId=btnRefresh&formId=shipping-byweight-form', 800, 400, true); return false;\" class='k-button' />"
                             },  {
                                 command: { name: "destroy", text: "@T("Admin.Common.Delete")" },
                                 title: "@T("Admin.Common.Delete")",
@@ -124,19 +124,19 @@
                     });
     </script>
 
-                <script type="text/javascript">
-                    $(document).ready(function () {
-                        $('#btnRefresh').click(function () {
-                            //refresh grid
-                            var grid = $("#shipping-byweight-grid").data('kendoGrid');
-                            //grid.dataSource.page(1); //new search. Set page size to 1
-                            grid.dataSource.read();
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#btnRefresh').click(function () {
+                //refresh grid
+                var grid = $("#shipping-byweight-grid").data('kendoGrid');
+                //grid.dataSource.page(1); //new search. Set page size to 1
+                grid.dataSource.read();
 
-                            //return false to don't reload a page
-                            return false;
-                        });
-                    });
-                </script>
+                //return false to don't reload a page
+                return false;
+            });
+        });
+    </script>
 
                 <table>
                     <tr>
@@ -162,7 +162,7 @@
                             $.ajax({
                                 cache: false,
                                 type: 'POST',
-                                url: '@Url.RouteUrl("Plugin.Shipping.ByWeight.SaveGeneralSettings")',
+                                url: '@Url.Action("SaveGeneralSettings", "ShippingByWeight")',
                                 data: postData,
                                 dataType: 'json',
                                 success: function (data) {
