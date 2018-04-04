@@ -12,17 +12,17 @@
             </div>
         </div>
         <div class="form-group">
+            @Html.GrandLabelFor(model => model.ParentCategoryId)
+            <div class="col-md-9 col-sm-9">
+                @Html.GrandDropDownListFor(model => model.ParentCategoryId, new SelectList(Model.Categories, "Id", "Name"))
+                @Html.ValidationMessageFor(model => model.ParentCategoryId)
+            </div>
+        </div>
+        <div class="form-group">
             @Html.GrandLabelFor(model => model.DisplayOrder)
             <div class="col-md-9 col-sm-9">
                 @Html.GrandEditorFor(model => model.DisplayOrder)
                 @Html.ValidationMessageFor(model => model.DisplayOrder)
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.GrandLabelFor(model => model.ParentCategoryId)
-            <div class="col-md-9 col-sm-9">
-                @Html.GrandEditorFor(model => model.ParentCategoryId)
-                @Html.ValidationMessageFor(model => model.ParentCategoryId)
             </div>
         </div>
     </div>
