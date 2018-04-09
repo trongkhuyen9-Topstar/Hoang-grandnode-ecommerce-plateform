@@ -17,7 +17,7 @@ var gridPageSizes = EngineContext.Current.Resolve<Grand.Core.Domain.Common.Admin
             dataSource: {
                 transport: {
                     read: {
-                        url: "@Html.Raw(Url.Action("ListActivityLog", "Knowledgebase", new { categoryId = Model.Id }))",
+                        url: "@Html.Raw(Url.Action("ListCategoryActivityLog", "Knowledgebase", new { categoryId = Model.Id }))",
                         type: "POST",
                         dataType: "json",
                         data: addAntiForgeryToken
