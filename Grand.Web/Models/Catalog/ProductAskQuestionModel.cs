@@ -1,11 +1,6 @@
 ﻿using FluentValidation.Attributes;
-using Grand.Framework;
 using Grand.Framework.Mvc.Models;
 using Grand.Web.Validators.Catalog;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
 using Grand.Framework.Mvc.ModelBinding;
 
 namespace Grand.Web.Models.Catalog
