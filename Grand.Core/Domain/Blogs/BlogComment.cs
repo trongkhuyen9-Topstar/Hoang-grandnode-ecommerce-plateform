@@ -7,7 +7,6 @@ namespace Grand.Core.Domain.Blogs
     /// </summary>
     public partial class BlogComment : BaseEntity
     {
-
         /// <summary>
         /// Gets or sets the customer identifier
         /// </summary>
@@ -32,7 +31,5 @@ namespace Grand.Core.Domain.Blogs
         /// Gets or sets the date and time of instance creation
         /// </summary>
         public DateTime CreatedOnUtc { get; set; }
-
-       
     }
 }
