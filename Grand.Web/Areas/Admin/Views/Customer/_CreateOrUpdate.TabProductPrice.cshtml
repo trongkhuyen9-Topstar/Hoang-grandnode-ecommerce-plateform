@@ -17,7 +17,7 @@
                 dataSource: {
                     transport: {
                         read: {
-                            url: "@Html.Raw(Url.Action("ListProductPrice", "Customer", new { customerId = Model.Id }))",
+                            url: "@Html.Raw(Url.Action("ProductsPrice", "Customer", new { customerId = Model.Id }))",
                             type: "POST",
                             dataType: "json",
                             data: addAntiForgeryToken
