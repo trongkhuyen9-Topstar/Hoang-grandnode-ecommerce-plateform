@@ -23,11 +23,11 @@ namespace Grand.Web.Areas.Api.Controllers.OData
             if (!_permissionService.Authorize(PermissionSystemName.Currencies))
                 return Forbid();
 
-            var language = _commonApiService.GetCurrencies().FirstOrDefault(x => x.Id == key);
-            if (language == null)
+            var currency = _commonApiService.GetCurrencies().FirstOrDefault(x => x.Id == key);
+            if (currency == null)
                 return NotFound();
 
-            return Ok(language);
+            return Ok(currency);
         }
 
         [HttpGet]
