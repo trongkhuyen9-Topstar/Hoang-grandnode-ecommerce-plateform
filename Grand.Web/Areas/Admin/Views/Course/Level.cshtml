@@ -53,14 +53,6 @@
                         dataType: "json",
                         data: addAntiForgeryToken
                     },
-                    parameterMap: function (data, operation) {
-                        if (operation != "read") {
-                            data.Ratio = kendo.toString(data.Ratio, "n8");
-                            return data;
-                        } else {
-                            return data;
-                        }
-                    }
                 },
                 schema: {
                     data: "Data",
