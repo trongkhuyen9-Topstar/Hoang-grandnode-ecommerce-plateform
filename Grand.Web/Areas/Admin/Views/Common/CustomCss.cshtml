@@ -1,5 +1,4 @@
-﻿@model CssEditor
-@inject AdminAreaSettings adminAreaSettings
+﻿@model Editor
 @{
     //page title
     ViewBag.Title = T("Admin.System.CustomCss").Text;
@@ -57,7 +56,7 @@
                         $('#btnSave').click(function () {
 				            $.ajax({
 					            cache: false,
-					            url: "@Url.Action("CustomCss", "Common")",
+					            url: "@Url.Action("SaveEditor", "Common")",
                                 data: additionalData(),
 					            type: 'POST',
 					            success: function (response) {
