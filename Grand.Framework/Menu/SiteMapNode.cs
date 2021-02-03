@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Routing;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 //code from Telerik MVC Extensions
 namespace Grand.Framework.Menu
@@ -11,7 +10,6 @@ namespace Grand.Framework.Menu
         /// </summary>
         public SiteMapNode()
         {
-            RouteValues = new RouteValueDictionary();
             ChildNodes = new List<SiteMapNode>();
             PermissionNames = new List<string>();
         }
@@ -36,10 +34,6 @@ namespace Grand.Framework.Menu
         /// </summary>
         public string ActionName { get; set; }
 
-        /// <summary>
-        /// Gets or sets the route values.
-        /// </summary>
-        public RouteValueDictionary RouteValues { get; set; }
 
         /// <summary>
         /// Gets or sets the URL.
